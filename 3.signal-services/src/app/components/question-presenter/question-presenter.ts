@@ -1,0 +1,19 @@
+import { Component, input, output } from '@angular/core';
+import { Question } from '../../models/question.model';
+
+@Component({
+  selector: 'app-question-presenter',
+  standalone: true,
+  imports: [],
+  templateUrl: './question-presenter.html',
+  styleUrl: './question-presenter.css'
+})
+export class QuestionPresenter {
+  readonly question = input.required<Question>();
+
+  readonly answered = output<number>();
+
+  public onAnswer(answerIndex: number) {
+    this.answered.emit(answerIndex);
+  }
+}
